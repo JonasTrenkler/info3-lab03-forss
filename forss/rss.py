@@ -28,6 +28,8 @@ def add_article(
     description: str | None = None,
     **kwargs: str,
 ):
+    channel: ET.Element = feed.find("channel") or feed
+
     # Sort out arguments that are None
     args = tuple(
         arg
@@ -41,7 +43,7 @@ def add_article(
 
     # One arg has to be set
     if len(args) > 0:
-        item = ET.SubElement(feed, "item")
+        item = ET.SubElement(channel, "item")
 
         for arg in args:
             ET.SubElement(item, arg[1]).text = arg[0]
