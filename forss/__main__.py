@@ -27,7 +27,9 @@ if __name__ == "__main__":
     termine = soup.find(class_="terminkalender")
 
     for article in termine.find_all("article"):
-        date = f'[{article.find(class_="month").text}/{article.find(class_="day").text}]'
+        date = (
+            f'[{article.find(class_="month").text}/{article.find(class_="day").text}]'
+        )
         rss.add_article(
             feed,
             title=f'{date} {article.find("h1").text}',

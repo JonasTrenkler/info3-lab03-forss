@@ -51,6 +51,4 @@ def add_article(
         for k, v in kwargs.items():
             ET.SubElement(item, k).text = v
     else:
-        logging.error(
-            "Failed to add feed: title, link and description not specified."
-        )
+        logging.error("Failed to add feed: title, link and description not specified.")
